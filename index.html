@@ -15,17 +15,17 @@
     <nav id="navbar">
         <header><h1>PHP - Language Reference</h1></header>
         <ul>
-            <li><a class="nav-link" href="#basic">Basic syntax</a></li>
-            <li><a class="nav-link" href="#types">Types</a></li>
-            <li><a class="nav-link" href="#variables">Variables</a></li>
-            <li><a class="nav-link" href="#constants">Constants</a></li>
-            <li><a class="nav-link" href="#expressions">Expressions</a></li>
-            <li><a class="nav-link" href="#others">...</a></li>
+            <li><a class="nav-link" href="#Basic_syntax">Basic syntax</a></li>
+            <li><a class="nav-link" href="#Types">Types</a></li>
+            <li><a class="nav-link" href="#Variables">Variables</a></li>
+            <li><a class="nav-link" href="#Constants">Constants</a></li>
+            <li><a class="nav-link" href="#Expressions">Expressions</a></li>
+            <li><a class="nav-link" href="#Others">Others</a></li>
         </ul>
     </nav>
     <!-- Main content -->
     <main id="main-doc">
-        <section class="main-section" id="basic">
+        <section class="main-section" id="Basic_syntax">
             <header>Basic syntax</header>
             <article>
                 <h3>PHP tags</h3>
@@ -33,98 +33,97 @@
                     documents, as everything outside of a pair of opening and closing tags is ignored by the PHP parser.</p>
                 <p>PHP also allows for short open tag &lt;? (which is discouraged since it is only available if enabled using the <a href="http://php.net/manual/en/ini.core.php#ini.short-open-tag">short_open_tag</a> php.ini configuration file directive,
                 or if PHP was configured with the --enable-short-tags option).</p>
-                <p>If a file is pure PHP code, it is preferable to omit the PHP closing tag at the end of the file. This prevents accidental whitespace or new lines being added after the PHP closing tag, which may cause unwanted effects because PHP will
-                    start output buffering when there is no intention from the programmer to send any output at that point in the script.</p>
-                <code>
-                        <pre>
-                            &lt;?php
-                            echo "Hello world";
-                            // ... more code
-                            echo "Last statement";
-                            // the script ends here with no PHP closing tag                        </pre>
-                </code>
+                <p>If a file is pure PHP code, it is preferable to omit the PHP closing tag at the end of the file. This prevents accidental whitespace or new lines being added after the PHP closing tag, which may cause unwanted effects because PHP will start output buffering when there is no intention from the programmer to send any output at that point in the script.</p>
+<code>&lt;?php
+echo "Hello world";
+// ... more code
+echo "Last statement";
+// the script ends here with no PHP closing tag
+</code>
                 <h3>Escaping from HTML</h3>
                 <p>Everything outside of a pair of opening and closing tags is ignored by the PHP parser which allows PHP files to have mixed content. This allows PHP to be embedded in HTML documents, for example to create templates.</p>
-                <code>
-                       <pre>
-                            &lt;p&gt;This is going to be ignored by PHP and displayed by the browser.&lt;/p&gt;
-                            &lt;?php echo 'While this is going to be parsed.'; ?&gt;
-                            &lt;p&gt;This will also be ignored by PHP and displayed by the browser.&lt;/p&gt;                       </pre>
-                </code>
+<code>&lt;p&gt;This is going to be ignored by PHP and displayed by the browser.&lt;/p&gt;
+&lt;?php echo 'While this is going to be parsed.'; ?&gt;
+</code>
                 <p>This works as expected, because when the PHP interpreter hits the ?&gt; closing tags, it simply starts outputting whatever it finds (except for an immediately following newline - see instruction separation) until it hits another opening
                     tag unless in the middle of a conditional statement in which case the interpreter will determine the outcome of the conditional before making a decision of what to skip over. See the next example.</p>
                 <h3>Instruction separation</h3>
                 <p>As in C or Perl, PHP requires instructions to be terminated with a semicolon at the end of each statement. The closing tag of a block of PHP code automatically implies a semicolon; you do not need to have a semicolon terminating the last
                     line of a PHP block. The closing tag for the block will include the immediately trailing newline if one is present.</p>
-                <code>
-                    <pre>
-                        &lt;?php
-                            echo 'This is a test';
-                        ?&gt;
+<code>&lt;?php
+echo 'This is a test';
+?&gt;
 
-                        &lt;?php echo 'This is a test' ?&gt;
+&lt;?php echo 'This is a test' ?&gt;
 
-                        &lt;?php echo 'We omitted the last closing tag';                    </pre>
-                </code>
+&lt;?php echo 'We omitted the last closing tag';
+</code>
                 <h3>Comments</h3>
                 <p>PHP supports 'C', 'C++' and Unix shell-style (Perl style) comments. For example:</p>
-                <code>
-                        <pre>
-                            &lt;?php
-                                echo 'This is a test'; // This is a one-line c++ style comment
-                                /* This is a multi line comment
-                                   yet another line of comment */
-                                echo 'This is yet another test';
-                                echo 'One Final Test'; # This is a one-line shell-style comment
-                            ?&gt;                        </pre>
-                    </code>
+<code>&lt;?php
+echo 'This is a test'; // This is a one-line c++ style comment
+/* This is a multi line comment
+yet another line of comment */
+echo 'This is yet another test';
+echo 'One Final Test'; # This is a one-line shell-style comment
+?&gt;
+</code>
             </article>
 
         </section>
-        <section class="main-section" id="types">
+        <section class="main-section" id="Types">
             <header>Types</header>
             <article>
+                <p>PHP supports the following date types:</p>
+                    <ul>
+                        <li>String</li>
+                        <li>Integer</li>
+                        <li>Float (floating poing numbers - also called double</li>
+                        <li>Boolean</li>
+                        <li>Array</li>
+                        <li>Object</li>
+                        <li>NULL</li>
+                        <li>Resource</li>
+                    </ul>
+
                 <h3>Booleans</h3>
                 <p>This is the simplest type. A <a href="http://php.net/manual/en/language.types.boolean.php">boolean</a> expresses a truth value. It can be either <b>TRUE</b> or <b>FALSE</b>.</p>
                 <h3>Integers</h3>
-                <a>An <a href="http://php.net/manual/en/language.types.integer.php">integer</a> is a number of the set ℤ = {..., -2, -1, 0, 1, 2, ...}.</pre>
+                <p>An <a href="http://php.net/manual/en/language.types.integer.php">integer</a> is a number of the set ℤ = {..., -2, -1, 0, 1, 2, ...}.</p>
                 <h3>Floating point numbers</h3>
                 <p>Floating point numbers (also known as "floats", "doubles", or "real numbers") can be specified using any of the following syntaxes:</p>
-                <code>
-                        <pre>
-                            &lt;?php
-                            $a = 1.234;
-                            $b = 1.2e3;
-                            $c = 7E-10;
-                            ?&gt;                        </pre>
-                </code>
+<code>&lt;?php
+$a = 1.234;
+$b = 1.2e3;
+$c = 7E-10;
+?&gt;
+</code>
                 <h3>Strings</h3>
-                <a>A <a href="http://php.net/manual/en/language.types.string.php">string</a> is series of characters, where a character is the same as a byte. This means that PHP only supports a 256-character set, and hence does not offer native Unicode
-                support. See details of the string type.</pre>
+                <p>A <a href="http://php.net/manual/en/language.types.string.php">string</a> is series of characters, where a character is the same as a byte. This means that PHP only supports a 256-character set, and hence does not offer native Unicode
+                    support. See details of the string type.</p>
                 <h3>Arrays</h3>
-                <a>An <a href="http://php.net/manual/en/language.types.array.php">array</a> in PHP is actually an ordered map. A map is a type that associates values to keys. This type is optimized for several different uses; it can be treated as an array,
-                list (vector), hash table (an implementation of a map), dictionary, collection, stack, queue, and probably more. As array values can be other arrays, trees and multidimensional arrays are also possible.</pre>
-                <a>And others types...(see <a href="http://php.net/manual/en/language.types.php">php.net</a>)</pre>
+                <p>An <a href="http://php.net/manual/en/language.types.array.php">array</a> in PHP is actually an ordered map. A map is a type that associates values to keys. This type is optimized for several different uses; it can be treated as an array,
+                    list (vector), hash table (an implementation of a map), dictionary, collection, stack, queue, and probably more. As array values can be other arrays, trees and multidimensional arrays are also possible.</p>
+                <p>And others types...(see <a href="http://php.net/manual/en/language.types.php">php.net</a>)</p>
             </article>
         </section>
-        <section class="main-section" id="variables">
+        <section class="main-section" id="Variables">
             <header>Variables</header>
             <article>
                 <h3>Basics</h3>
                 <p>Variables in PHP are represented by a dollar sign followed by the name of the variable. The variable name is case-sensitive.</p>
                 <p> Variable names follow the same rules as other labels in PHP. A valid variable name starts with a letter or underscore, followed by any number of letters, numbers, or underscores. As a regular expression, it would be expressed thus: <i>'[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*'</i></p>
-                <code>
-                    <pre>
-                        &lt;?php
-                        $var = 'Bob';
-                        echo "$var, $Var";      // outputs "Bob, Joe"
-                        $Var = 'Joe';
 
-                        $_4site = 'not yet';    // valid; starts with an underscore
-                        $4site = 'not yet';     // invalid; starts with a number
-                        ?&gt;
-                        $täyte = 'mansikka';    // valid; 'ä' is (Extended) ASCII 228.                    </pre>
-                </code>
+<code>&lt;?php
+$var = 'Bob';
+echo "$var, $Var";      // outputs "Bob, Joe"
+$Var = 'Joe';
+
+$_4site = 'not yet';    // valid; starts with an underscore
+$4site = 'not yet';     // invalid; starts with a number
+?&gt;
+$täyte = 'mansikka';    // valid; 'ä' is (Extended) ASCII 228.
+</code>
                 <h3>Predefined Variables</h3>
                 <p>PHP provides a large number of predefined variables to any script which it runs. Many of these variables, however, cannot be fully documented as they are dependent upon which server is running, the version and setup of the server, and
                     other factors. Some of these variables will not be available when PHP is run on the command line. For a listing of these variables, please see the section on Reserved Predefined Variables.</p>
@@ -136,36 +135,34 @@
                 <a href="http://php.net/manual/en/language.variables.external.php">Variables From External Sources</a>
             </article>
         </section>
-        <section class="main-section" id="constants">
+        <section class="main-section" id="Constants">
             <header>Constants</header>
             <article>
-                <a>A constant is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script (except for <a href="http://php.net/manual/en/language.constants.predefined.php">magic constants</a>,
-                which aren't actually constants). A constant is case-sensitive by default. By convention, constant identifiers are always uppercase.</pre>
+                <p>A constant is an identifier (name) for a simple value. As the name suggests, that value cannot change during the execution of the script (except for <a href="http://php.net/manual/en/language.constants.predefined.php">magic constants</a>,
+                    which aren't actually constants). A constant is case-sensitive by default. By convention, constant identifiers are always uppercase.</p>
                 <p>The name of a constant follows the same rules as any label in PHP. A valid constant name starts with a letter or underscore, followed by any number of letters, numbers, or underscores. As a regular expression, it would be expressed thusly:
                     <i>[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*</i></p>
                 <p><b>Example Valid and invalid constant names</b></p>
-                <code>
-                        <pre>
-                            &lt;?php
+<code>&lt;?php
 
-                            // Valid constant names
-                            define("FOO",     "something");
-                            define("FOO2",    "something else");
-                            define("FOO_BAR", "something more");
+// Valid constant names
+define("FOO",     "something");
+define("FOO2",    "something else");
+define("FOO_BAR", "something more");
 
-                            // Invalid constant names
-                            define("2FOO",    "something");
+// Invalid constant names
+define("2FOO",    "something");
 
-                            // This is valid, but should be avoided:
-                            // PHP may one day provide a magical constant
-                            // that will break your script
-                            define("__FOO__", "something");
+// This is valid, but should be avoided:
+// PHP may one day provide a magical constant
+// that will break your script
+define("__FOO__", "something");
 
-                            ?&gt;                        </pre>
-                </code>
+?&gt;
+</code>
             </article>
         </section>
-        <section class="main-section" id="expressions">
+        <section class="main-section" id="Expressions">
             <header>Expressions</header>
             <article>
                 <p>Expressions are the most important building blocks of PHP. In PHP, almost anything you write is an expression. The simplest yet most accurate way to define an expression is "anything that has a value".</p>
@@ -174,15 +171,13 @@
                 <p>After this assignment, you'd expect $a's value to be 5 as well, so if you wrote $b = $a, you'd expect it to behave just as if you wrote $b = 5. In other words, $a is an expression with the value of 5 as well. If everything works right,
                     this is exactly what will happen.</p>
                 <p>Slightly more complex examples for expressions are functions. For instance, consider the following function:</p>
-                <code>
-                    <pre>
-                        &lt;?php
-                        function foo ()
-                        {
-                            return 5;
-                        }
-                        ?&gt;                    </pre>
-                </code>
+<code>&lt;?php
+function foo ()
+{
+  return 5;
+}
+?&gt;
+</code>
                 <p>Assuming you're familiar with the concept of functions (if you're not, take a look at the chapter about functions), you'd assume that typing $c = foo() is essentially just like writing $c = 5, and you're right. Functions are expressions
                     with the value of their return value. Since foo() returns 5, the value of the expression 'foo()' is 5. Usually functions don't just return a static value but compute something.</p>
                 <p>Of course, values in PHP don't have to be integers, and very often they aren't. PHP supports four scalar value types: integer values, floating point values (float), string values and boolean values (scalar values are values that you can't
@@ -206,13 +201,14 @@
                     mode, for example '$a -= 5' (subtract 5 from the value of $a), '$b *= 7' (multiply the value of $b by 7), etc.</p>
             </article>
         </section>
-        <section class="main-section" id="others">
+        <section class="main-section" id="Others">
             <header>Others</header>
             <article>
-                <a>See others to <a href="http://php.net">php.net</a>
+                <p>See others to <a href="http://php.net">php.net</a></p>
             </article>
         </section>
     </main>
+    <script src="app.js"></script>
 </body>
 
 </html>
