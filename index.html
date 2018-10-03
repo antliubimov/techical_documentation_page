@@ -10,17 +10,16 @@
 </head>
 
 <body>
+
     <!-- Navigation -->
     <nav id="navbar">
-        <header>PHP - Language Reference</header>
+        <header><h1>PHP - Language Reference</h1></header>
         <ul>
             <li><a class="nav-link" href="#basic">Basic syntax</a></li>
             <li><a class="nav-link" href="#types">Types</a></li>
             <li><a class="nav-link" href="#variables">Variables</a></li>
             <li><a class="nav-link" href="#constants">Constants</a></li>
             <li><a class="nav-link" href="#expressions">Expressions</a></li>
-            <li><a class="nav-link" href="#operators">Operators<a></li>
-            <li><a class="nav-link" href="#cont_struct">Control Structures</a></li>
             <li><a class="nav-link" href="#others">...</a></li>
         </ul>
     </nav>
@@ -32,7 +31,7 @@
                 <h3>PHP tags</h3>
                 <p>When PHP parses a file, it looks for opening and closing tags, which are &lt;?php and ?&gt; which tell PHP to start and stop interpreting the code between them. Parsing in this manner allows PHP to be embedded in all sorts of different
                     documents, as everything outside of a pair of opening and closing tags is ignored by the PHP parser.</p>
-                <a>PHP also allows for short open tag &lt;? (which is discouraged since it is only available if enabled using the <a href="http://php.net/manual/en/ini.core.php#ini.short-open-tag">short_open_tag</a> php.ini configuration file directive,
+                <p>PHP also allows for short open tag &lt;? (which is discouraged since it is only available if enabled using the <a href="http://php.net/manual/en/ini.core.php#ini.short-open-tag">short_open_tag</a> php.ini configuration file directive,
                 or if PHP was configured with the --enable-short-tags option).</p>
                 <p>If a file is pure PHP code, it is preferable to omit the PHP closing tag at the end of the file. This prevents accidental whitespace or new lines being added after the PHP closing tag, which may cause unwanted effects because PHP will
                     start output buffering when there is no intention from the programmer to send any output at that point in the script.</p>
@@ -40,13 +39,9 @@
                         <pre>
                             &lt;?php
                             echo "Hello world";
-
                             // ... more code
-
                             echo "Last statement";
-
-                            // the script ends here with no PHP closing tag
-                        </pre>
+                            // the script ends here with no PHP closing tag                        </pre>
                 </code>
                 <h3>Escaping from HTML</h3>
                 <p>Everything outside of a pair of opening and closing tags is ignored by the PHP parser which allows PHP files to have mixed content. This allows PHP to be embedded in HTML documents, for example to create templates.</p>
@@ -54,8 +49,7 @@
                        <pre>
                             &lt;p&gt;This is going to be ignored by PHP and displayed by the browser.&lt;/p&gt;
                             &lt;?php echo 'While this is going to be parsed.'; ?&gt;
-                            &lt;p&gt;This will also be ignored by PHP and displayed by the browser.&lt;/p&gt;
-                       </pre>
+                            &lt;p&gt;This will also be ignored by PHP and displayed by the browser.&lt;/p&gt;                       </pre>
                 </code>
                 <p>This works as expected, because when the PHP interpreter hits the ?&gt; closing tags, it simply starts outputting whatever it finds (except for an immediately following newline - see instruction separation) until it hits another opening
                     tag unless in the middle of a conditional statement in which case the interpreter will determine the outcome of the conditional before making a decision of what to skip over. See the next example.</p>
@@ -70,8 +64,7 @@
 
                         &lt;?php echo 'This is a test' ?&gt;
 
-                        &lt;?php echo 'We omitted the last closing tag';
-                    </pre>
+                        &lt;?php echo 'We omitted the last closing tag';                    </pre>
                 </code>
                 <h3>Comments</h3>
                 <p>PHP supports 'C', 'C++' and Unix shell-style (Perl style) comments. For example:</p>
@@ -83,8 +76,7 @@
                                    yet another line of comment */
                                 echo 'This is yet another test';
                                 echo 'One Final Test'; # This is a one-line shell-style comment
-                            ?&gt;
-                        </pre>
+                            ?&gt;                        </pre>
                     </code>
             </article>
 
@@ -104,8 +96,7 @@
                             $a = 1.234;
                             $b = 1.2e3;
                             $c = 7E-10;
-                            ?&gt;
-                        </pre>
+                            ?&gt;                        </pre>
                 </code>
                 <h3>Strings</h3>
                 <a>A <a href="http://php.net/manual/en/language.types.string.php">string</a> is series of characters, where a character is the same as a byte. This means that PHP only supports a 256-character set, and hence does not offer native Unicode
@@ -132,8 +123,7 @@
                         $_4site = 'not yet';    // valid; starts with an underscore
                         $4site = 'not yet';     // invalid; starts with a number
                         ?&gt;
-                        $täyte = 'mansikka';    // valid; 'ä' is (Extended) ASCII 228.
-                    </pre>
+                        $täyte = 'mansikka';    // valid; 'ä' is (Extended) ASCII 228.                    </pre>
                 </code>
                 <h3>Predefined Variables</h3>
                 <p>PHP provides a large number of predefined variables to any script which it runs. Many of these variables, however, cannot be fully documented as they are dependent upon which server is running, the version and setup of the server, and
@@ -171,8 +161,7 @@
                             // that will break your script
                             define("__FOO__", "something");
 
-                            ?&gt;
-                        </pre>
+                            ?&gt;                        </pre>
                 </code>
             </article>
         </section>
@@ -192,8 +181,7 @@
                         {
                             return 5;
                         }
-                        ?&gt;
-                    </pre>
+                        ?&gt;                    </pre>
                 </code>
                 <p>Assuming you're familiar with the concept of functions (if you're not, take a look at the chapter about functions), you'd assume that typing $c = foo() is essentially just like writing $c = 5, and you're right. Functions are expressions
                     with the value of their return value. Since foo() returns 5, the value of the expression 'foo()' is 5. Usually functions don't just return a static value but compute something.</p>
@@ -221,7 +209,7 @@
         <section class="main-section" id="others">
             <header>Others</header>
             <article>
-                <a>See others to <a href="http://php.net">php.net</a></pre>
+                <a>See others to <a href="http://php.net">php.net</a>
             </article>
         </section>
     </main>
